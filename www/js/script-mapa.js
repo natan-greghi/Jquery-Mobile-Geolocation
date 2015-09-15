@@ -1,7 +1,16 @@
+var watchid = null;
+
 $(document).on("pageinit", function(){
 
 		mostrarMapa();
 	});
+
+
+document.addEventListener("deviceready",onDeviceReady,false);
+function onDeviceReady()
+{
+watchid = navigator.geolocation.watchPosition(sucesso,erro,{timeout: 10000});
+};
 
 function mostrarMapa(){
 	if(navigator.geolocation){
@@ -51,3 +60,8 @@ function sucesso(position){
 		});
 	map.setCenter(local);
 };
+
+
+
+
+
